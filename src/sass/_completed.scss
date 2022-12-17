@@ -1,0 +1,21 @@
+@use "variables" as var;
+
+.completed-task {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 1em;
+  background-color: rgba(84, 84, 84, 0.3);
+  border-radius: 5px;
+  padding: 1em;
+  position: relative;
+}
+
+.completed-task:hover {
+  background-color: rgba(2, 164, 2, 0.3);
+}
+
+.completed-text {
+  text-decoration: line-through;
+}
