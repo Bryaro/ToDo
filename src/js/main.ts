@@ -1,26 +1,24 @@
-let ListElement = document.getElementById("ongoing-tasks-container");
-let newTaskButton = document.getElementById("create-btn");
-let userInput = document.getElementById("input-field");
+const ListElement = document.getElementById("ongoing-tasks-container") as HTMLElement;
+const newTaskButton = document.getElementById("create-btn") as HTMLButtonElement;
+const userInput = document.getElementById("input-field") as HTMLInputElement;
+const taskList: { userInput: string, isCompleted: boolean, onList: boolean }[] = [];
 
 newTaskButton.addEventListener("click", createNewTask);
 
-let taskList = [];
-
-
 createHTML();
 
-function createHTML() {
+function createHTML(): void {
   for (let i = 0; i < taskList.length; i++) {
-    let taskElement = document.createElement("li");
-    let userText = document.createElement("p");
-    let doneButton = document.createElement("button");
-    let removeButton = document.createElement("button");
+    const taskElement = document.createElement("li") as HTMLLIElement;
+    const userText = document.createElement("p") as HTMLParagraphElement;
+    const doneButton = document.createElement("button") as HTMLButtonElement;
+    const removeButton = document.createElement("button") as HTMLButtonElement;
     removeButton.innerText = "X";
     removeButton.addEventListener("click", removeTask);
     doneButton.innerText = "Done";
     doneButton.className = "complete-task-btn";
 
-    if (taskList[i].onList == false) {
+    if (taskList[i].onList === false) {
       userText.innerText = taskList[i].userInput;
       userText.className = "ongoing-text";
       taskElement.className = "ongoing-task";
@@ -34,7 +32,7 @@ function createHTML() {
       taskList[i].onList = true;
     }
 
-    function completeTask() {
+    function completeTask(): void {
       taskList[i].isCompleted = true;
       console.log(taskList[i]);
       doneButton.removeEventListener("click", completeTask);
@@ -48,7 +46,7 @@ function createHTML() {
       }
     }
 
-    function makeOngoing() {
+    function makeOngoing(): void {
       taskList[i].isCompleted = false;
       console.log(taskList[i]);
 
@@ -62,8 +60,8 @@ function createHTML() {
       }
     }
 
-    function removeTask() {
-      taskList.splice(taskList[i], 1);
+    function removeTask(): void {
+      taskList.splice(i, 1);
       ListElement.innerHTML = "";
       console.log(taskList);
       for (let i = 0; i < taskList.length; i++) {
@@ -74,23 +72,26 @@ function createHTML() {
   }
 }
 
-function createNewTask() {
-  if (userInput.value == "") {
+function createNewTask(): void {
+  const inputValue = userInput.value.trim();
+
+  if (!inputValue) {
     alert("Du måste skriva något i fältet!");
-  } else {
-    let task = {
-      userInput: userInput.value,
-      isCompleted: false,
-      onList: false,
-    };
-    taskList.push(task);
-    console.log(taskList);
-    userInput.value = "";
-
-    createHTML();
+    return;
   }
-}
+
+  const task = {
+    userInput: inputValue,
+    isCompleted: false,
+    onList: false,
+  };
+
+  taskList.push(task);
+  console.log(taskList);
+
+  userInput.value = "";
   createHTML();
+}
 
 
-
+createHTML();
