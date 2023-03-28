@@ -73,19 +73,25 @@ function createHTML(): void {
 }
 
 function createNewTask(): void {
-  if (userInput.value === "") {
-    alert("Du måste skriva något i fältet!");
-  } else {
-    const task = {
-      userInput: userInput.value,
-      isCompleted: false,
-      onList: false,
-    };
-    taskList.push(task);
-    console.log(taskList);
-    userInput.value = "";
+  const inputValue = userInput.value.trim();
 
-    createHTML();
+  if (!inputValue) {
+    alert("Du måste skriva något i fältet!");
+    return;
   }
+
+  const task = {
+    userInput: inputValue,
+    isCompleted: false,
+    onList: false,
+  };
+
+  taskList.push(task);
+  console.log(taskList);
+
+  userInput.value = "";
+  createHTML();
 }
+
+
 createHTML();
