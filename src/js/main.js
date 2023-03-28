@@ -1,10 +1,8 @@
 let ListElement = document.getElementById("ongoing-tasks-container");
 let newTaskButton = document.getElementById("create-btn");
 let userInput = document.getElementById("input-field");
-let sortButton = document.getElementById("sort-btn");
 
 newTaskButton.addEventListener("click", createNewTask);
-sortButton.addEventListener("click", sortAlphabetically);
 
 let taskList = [];
 
@@ -92,20 +90,7 @@ function createNewTask() {
     createHTML();
   }
 }
-
-function sortAlphabetically() {
-  taskList.sort(function (x, y) {
-    let a = x.userInput.toUpperCase(),
-      b = y.userInput.toUpperCase();
-    return a == b ? 0 : a > b ? 1 : -1;
-  });
-
-  ListElement.innerHTML = "";
-  console.log(taskList);
-  for (let i = 0; i < taskList.length; i++) {
-    taskList[i].onList = false;
-  }
   createHTML();
-}
+
 
 

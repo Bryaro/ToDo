@@ -1,6 +1,28 @@
 {
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.2",
-    "parcel": "^2.7.0"
-  }
+    "parcel": "^2.7.0",
+    "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "sass": "^1.60.0"
+  },
+  "name": "todo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bryaro/ToDo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bryaro/ToDo/issues"
+  },
+  "homepage": "https://github.com/Bryaro/ToDo#readme",
+  "description": ""
 }
